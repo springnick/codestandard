@@ -7,7 +7,7 @@
 <br><span style="color:orange">说明</span>：可变参数必须放置在参数列表的最后。（提倡同学们尽量不用可变参数编程） 
 <br><span style="color:green">正例</span>：
 ``` java
-public User getUsers(String type, Integer... ids) {...};
+public User getUsers(String type, Integer... ids) {...}
 ```
 4. 【强制】外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加`@Deprecated`注解，并清晰地说明采用的新接口或者新服务是什么。 
 5. 【强制】不能使用过时的类或方法。 
