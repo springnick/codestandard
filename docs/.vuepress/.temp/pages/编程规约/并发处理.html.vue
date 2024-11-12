@@ -5,12 +5,12 @@
 <li>【强制】创建线程或线程池时请指定有意义的线程名称，方便出错时回溯。
 <br><span style="color:green">正例</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>    public class TimerTaskThread extends Thread {      
-        public TimerTaskThread() {      
-              super.setName("TimerTaskThread");   
-              ... 
-        }
-    }
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code>    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TimerTaskThread</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>      
+        <span class="token keyword">public</span> <span class="token class-name">TimerTaskThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      
+              <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"TimerTaskThread"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+              <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
 <li>【强制】线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。
 <br><span style="color:orange">说明</span>：使用线程池的好处是减少在创建和销毁线程上所花的时间以及系统资源的开销，解决资源不足的问题。如果不使用线程池，有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换”的问题。</li>
@@ -21,12 +21,12 @@
 <li>【强制】SimpleDateFormat 是线程不安全的类，一般不要定义为static变量，如果定义为static，必须加锁，或者使用DateUtils工具类。
 <br><span style="color:green">正例</span>：注意线程安全，使用<code v-pre>DateUtils</code>。亦推荐如下处理：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>private static final ThreadLocal&lt;DateFormat> df = new ThreadLocal&lt;DateFormat>() {        
-    Override        
-    protected DateFormat initialValue() {         
-        return new SimpleDateFormat("yyyy-MM-dd");        
-    }    
-};
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DateFormat</span><span class="token punctuation">></span></span> df <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DateFormat</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+    <span class="token class-name">Override</span>        
+    <span class="token keyword">protected</span> <span class="token class-name">DateFormat</span> <span class="token function">initialValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>         
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+    <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><span style="color:orange">说明</span>：如果是JDK8的应用，可以使用<code v-pre>Instant</code>代替<code v-pre>Date</code>，<code v-pre>LocalDateTime</code>代替<code v-pre>Calendar</code>，<code v-pre>DateTimeFormatter</code>代替<code v-pre>SimpleDateFormat</code>，官方给出的解释：</p>
 <blockquote>
 <p>simple beautiful strong immutable thread-safe。</p>

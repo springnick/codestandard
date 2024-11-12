@@ -1,5 +1,5 @@
-<template><div><h1 id="一、编程规约" tabindex="-1"><a class="header-anchor" href="#一、编程规约"><span>一、编程规约</span></a></h1>
-<h2 id="_1-命名风格" tabindex="-1"><a class="header-anchor" href="#_1-命名风格"><span>（1）命名风格</span></a></h2>
+<template><div><h1 id="_1-编程规约" tabindex="-1"><a class="header-anchor" href="#_1-编程规约"><span>1 编程规约</span></a></h1>
+<h2 id="_1-1-命名风格" tabindex="-1"><a class="header-anchor" href="#_1-1-命名风格"><span>1.1 命名风格</span></a></h2>
 <ol>
 <li><span style="color:red">【强制】</span>代码中的命名均不能以<strong>下划线或美元符号</strong>开始，也不能以<strong>下划线或美元符号</strong>结束。
 <br><span style="color:red">反例</span>：<code v-pre>_name / __name / $name / name_ / name$ / name__</code></li>
@@ -11,34 +11,32 @@
 <br><span style="color:green">正例</span>：PolicySearchDTO / CustomerVO
 <br><span style="color:red">反例</span>：customer / PH / COVERAGE</li>
 <li>【强制】方法名、参数名、成员变量、局部变量都统一使用<code v-pre>lowerCamelCase</code>风格，必须遵从驼峰形式。
-<br><span style="color:green">正例</span>： getPolicy / insuredName</li>
-<li>【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。
-<br><span style="color:green">正例</span>：
-<br><span style="color:red">反例</span>：MAX_COUNT</li>
-<li>【强制】抽象类命名使用Abstract或Base开头；异常类命名使用Exception结尾；测试类命名以它要测试的类名开始，以Test结尾。</li>
+<br><span style="color:green">正例</span>： getPolicy / insuredName
+<br><span style="color:red">反例</span>：GetPolicy / QUERY_POLICY</li>
+<li>【强制】抽象类命名使用Abstract或Base开头；异常类命名使用Exception结尾；测试类命名以它要测试的类名开始，以Test结尾。
+<br><span style="color:green">正例</span>： AbstractPolicy / BaseService / PremiumTest</li>
 <li>【强制】类型与中括号紧挨相连来定义数组。
-<br><span style="color:green">正例</span>：定义整形数组<code>int[] arrayDemo;</code>
-<br><span style="color:red">反例</span>：在main参数中，使用<code>String args[]</code>来定义。</li>
+<br><span style="color:green">正例</span>：定义整形数组<code>int[] ages;</code>
+<br><span style="color:red">反例</span>：在main参数中，使用<code>String names[]</code>来定义。</li>
 <li>【强制】POJO类中布尔类型的变量，都不要加is前缀，否则部分框架解析会引起序列化错误。
 <br><span style="color:red">反例</span>：定义为基本数据类型<code>Boolean isDeleted；</code>的属性，它的方法也是<code>isDeleted()</code>，RPC框架在反向解析的时候，“误以为”对应的属性名称是deleted，导致属性获取不到，进而抛出异常。</li>
 <li>【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。
-<br><span style="color:green">正例</span>：应用工具类包名为com.alibaba.ai.util、类名为MessageUtils（此规则参考spring的框架结构）</li>
+<br><span style="color:green">正例</span>：应用工具类包名为com.ebao.pub.util、类名为StringUtils</li>
 <li>【强制】杜绝完全不规范的缩写，避免望文不知义。
 <br><span style="color:red">反例</span>：AbstractClass“缩写”命名成AbsClass；condition“缩写”命名成 condi，此类随意缩写严重降低了代码的可阅读性。</li>
-<li>【推荐】为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。
-<br><span style="color:green">正例</span>：从远程仓库拉取代码的类命名为PullCodeFromRemoteRepository。
+<li>【推荐】命名要统一，达意前提下力求简洁。 为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。
+<br><span style="color:green">正例</span>： getPolicyName,  getPhDob
 <br><span style="color:red">反例</span>：变量int a; 的随意命名方式。</li>
 <li>【推荐】如果模块、接口、类、方法使用了设计模式，在命名时体现出具体模式。
 <br><span style="color:orange">说明</span>：将设计模式体现在名字中，有利于阅读者快速理解架构设计理念。
 <br><span style="color:green">正例</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>public class OrderFactory;
-public class LoginProxy;
-public class ResourceObserver; 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="13">
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PrintListener</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IssueEvent</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ol start="13">
 <li>【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。
-<br><span style="color:green">正例</span>：接口方法签名void f(); 接口基础常量String COMPANY = &quot;alibaba&quot;;
-<br><span style="color:red">反例</span>：接口方法定义public abstract void f();
+<br><span style="color:green">正例</span>：接口方法签名void confirm(); 接口基础常量String STATUS_BIND = &quot;BIND&quot;;
+<br><span style="color:red">反例</span>：接口方法定义public abstract void confirm();
 <br><span style="color:orange">说明</span>：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现。</li>
 <li>接口和实现类的命名有两套规则：<br>
 1）【强制】对于Service和DAO类，基于SOA的理念，暴露出来的服务一定是接口，内部的实现类用Impl的后缀与接口区别。
@@ -49,19 +47,21 @@ public class ResourceObserver;
 <br><span style="color:orange">说明</span>：枚举其实就是特殊的常量类，且构造方法被默认强制是私有。
 <br><span style="color:green">正例</span>：枚举名字为ProcessStatusEnum的成员名称：SUCCESS / UNKNOWN_REASON。</li>
 <li>【参考】各层命名规约：<br>
-A) Service/DAO层方法命名规约<br>
-1） 获取单个对象的方法用get作前缀。
-<br>2） 获取多个对象的方法用list作前缀。
-<br>3） 获取统计值的方法用count作前缀。<br>
-4） 插入的方法用save/insert作前缀。<br>
-5） 删除的方法用remove/delete作前缀。<br>
-6） 修改的方法用update作前缀。
-<br>B) 领域模型命名规约 <br>
-1） 数据对象：xxxDO，xxx即为数据表名。<br>
-2） 数据传输对象：xxxDTO，xxx为业务领域相关的名称。<br>
-3） 展示对象：xxxVO，xxx一般为网页名称。<br>
-4） POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li>
+<br> A) Service/DAO层方法命名规约<br></li>
 </ol>
+<ul>
+<li>获取单个对象的方法用<b>get</b>作前缀。</li>
+<li>获取多个对象的方法用<b>list</b>作前缀。</li>
+<li>获取统计值的方法用<b>count</b>作前缀。</li>
+<li>插入的方法用<b>save/insert</b>作前缀。</li>
+<li>删除的方法用<b>remove/delete</b>作前缀。</li>
+<li>修改的方法用<b>update</b>作前缀。
+<br>B) 领域模型命名规约 <br></li>
+<li>数据对象：xxxDO，xxx即为数据表名。</li>
+<li>数据传输对象：xxxDTO，xxx为业务领域相关的名称。</li>
+<li>展示对象：xxxVO，xxx一般为网页名称。</li>
+<li>POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li>
+</ul>
 </div></template>
 
 

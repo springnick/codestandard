@@ -7,7 +7,7 @@
 <br><span style="color:orange">说明</span>：可变参数必须放置在参数列表的最后。（提倡同学们尽量不用可变参数编程）
 <br><span style="color:green">正例</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>public User getUsers(String type, Integer... ids) {...} 
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">getUsers</span><span class="token punctuation">(</span><span class="token class-name">String</span> type<span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> ids<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="4">
 <li>【强制】外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加<code v-pre>@Deprecated</code>注解，并清晰地说明采用的新接口或者新服务是什么。</li>
 <li>【强制】不能使用过时的类或方法。
@@ -34,9 +34,9 @@
 <li>【推荐】使用索引访问用String的split方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛IndexOutOfBoundsException的风险。
 <br><span style="color:orange">说明</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>String str = "a,b,c,,";  
-String[] ary = str.split(",");  
-// 预期大于3，结果是3 System.out.println(ary.length);
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code><span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token string">"a,b,c,,"</span><span class="token punctuation">;</span>  
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ary <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token comment">// 预期大于3，结果是3 System.out.println(ary.length);</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="14">
 <li>【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读，此条规则优先于第15条规则。</li>
 <li>【推荐】 类内方法定义的顺序依次是：公有方法或保护方法 &gt; 私有方法 &gt; getter/setter方法。
@@ -44,21 +44,21 @@ String[] ary = str.split(",");
 <li>【推荐】setter方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。在getter/setter方法中，不要增加业务逻辑，增加排查问题的难度。
 <br><span style="color:red">反例</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>  public Integer getData() {      
-      if (condition) {  
-        return this.data + 100;  
-      } else { 
-        return this.data - 100; 
-      }  
-  }
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code>  <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">+</span> <span class="token number">100</span><span class="token punctuation">;</span>  
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">-</span> <span class="token number">100</span><span class="token punctuation">;</span> 
+      <span class="token punctuation">}</span>  
+  <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="17">
 <li>【推荐】循环体内，字符串的连接方式，使用StringBuilder的append方法进行扩展。
 <br><span style="color:orange">说明</span>：反编译出的字节码文件显示每次循环都会new出一个StringBuilder对象，然后进行append操作，最后通过toString方法返回String对象，造成内存资源浪费。  <br><span style="color:red">反例</span>：</li>
 </ol>
-<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>  String str = "start";
-  for (int i = 0; i &lt; 100; i++) {
-      str = str + "hello";      
-  }
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre v-pre class="language-java"><code>  <span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token string">"start"</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      str <span class="token operator">=</span> str <span class="token operator">+</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>      
+  <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="18">
 <li>【推荐】final可以声明类、成员变量、方法、以及本地变量，下列情况使用final关键字：
 <br>1） 不允许被继承的类，如：String类。

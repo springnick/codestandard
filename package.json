@@ -1,7 +1,7 @@
 {
-  "name": "thaicloudcoding",
+  "name": "seacoding",
   "version": "0.0.1",
-  "description": "Thaicloud 编码规范",
+  "description": "SEA 编码规范",
   "license": "MIT",
   "type": "module",
   "scripts": {
