@@ -1,18 +1,18 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
-import { viteBundler } from '@vuepress/bundler-vite'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 
 export default defineUserConfig({
-  lang: 'zh-CN',
+  lang: 'en-US',
 
-  title: 'Thaicloud 编码规范',
-  description: 'Thaicloud 代码规范',
+  title: 'VuePress',
+  description: 'My first VuePress Site',
 
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
 
-    navbar: ['/'],
+    navbar: ['/', '/get-started'],
   }),
 
-  bundler: viteBundler(),
+  bundler: webpackBundler(),
 })
