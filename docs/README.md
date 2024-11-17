@@ -22,7 +22,7 @@
 
 ## Thaicloud
   [动态脚本](rule.md)
-  [Web](web/web.md)
+  [Web](thaicloud/web/web.md)
   [数据库脚本](thaicloud/数据库脚本.md)
   
 ## [LMG](lmg/LMG.md)
