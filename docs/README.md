@@ -15,3 +15,5 @@ footer:  Copyright © 2024- SEA ThaiCloud
 ## [安全规约](security.md)
 ## [Thaicloud](thaicloud.md)
 ## [LMG](lmg.md)
+
+## [问题列表](issues.md)
