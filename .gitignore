@@ -1,5 +1,7 @@
+# VuePress 目录
 docs/.vuepress/dist/
 docs/.vuepress/.cache/
-docs/\.vuepress/\.temp/
+docs/.vuepress/.temp/
 
+# 依赖
 node_modules/
