@@ -3,6 +3,11 @@ docs/.vuepress/dist/
 docs/.vuepress/.cache/
 docs/.vuepress/.temp/
 
-
 # 依赖
 node_modules/
+
+# Docker
+.docker/
+*.env
+.env.*
+!.env.example
