@@ -1,15 +1,32 @@
-FROM nginx:1.21.0-alpine
+# 使用 Node.js 作为构建阶段
+FROM node:14-alpine AS build
 
+# 设置工作目录
+WORKDIR /app
+
+# 复制 package.json 和 package-lock.json
+COPY package*.json ./
+
+# 安装依赖
+RUN npm install
+
+# 复制应用源代码
+COPY . .
+
+# 运行构建命令
+RUN npm run docs:build
+
+# 使用 Nginx 作为最终运行环境
+FROM nginx:latest
+
+# 设置工作目录
 WORKDIR /usr/share/nginx/html
 
-RUN mkdir /dist
-RUN mkdir /etc/nginx/ssl
-COPY ./dist ./dist
-# COPY ./default.conf /etc/nginx/conf.d/default.conf
-# COPY ./ssl/hellocoders.cn_bundle.pem /etc/nginx/ssl/
-# COPY ./ssl/hellocoders.cn.key /etc/nginx/ssl/
+# 从构建阶段复制构建好的静态文件到 Nginx 的工作目录
+COPY --from=build /app/docs/.vuepress/dist .
 
-EXPOSE 443
+# 暴露端口
+EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
-
+# 启动 Nginx 服务
+CMD ["nginx", "-g", "daemon off;"] 
