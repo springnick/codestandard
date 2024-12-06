@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # 运行构建命令
-RUN npm run docs:build
+RUN npm run build
 
 # 使用 Nginx 作为最终运行环境
 FROM nginx:latest
@@ -23,7 +23,7 @@ FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
 # 从构建阶段复制构建好的静态文件到 Nginx 的工作目录
-COPY --from=build /app/docs/.vuepress/dist .
+COPY --from=build /app/dist .
 
 # 暴露端口
 EXPOSE 80

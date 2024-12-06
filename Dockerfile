@@ -1,20 +1,20 @@
-# # 使用 Node.js 作为构建阶段
-# FROM node:latest AS build
+# 使用 Node.js 作为构建阶段
+FROM node:latest AS build
 
-# # 设置工作目录
-# WORKDIR /app
+# 设置工作目录
+WORKDIR /app
 
-# # 复制 package.json 和 package-lock.json
-# COPY package*.json ./
+# 复制 package.json 和 package-lock.json
+COPY package*.json ./
 
-# # 安装依赖
-# RUN npm install
+# 安装依赖
+RUN npm install
 
-# # 复制应用源代码
-# COPY . .
+# 复制应用源代码
+COPY . .
 
-# # 运行构建命令
-# RUN npm run docs:build
+# 运行构建命令
+RUN npm run docs:build
 
 # 使用 Nginx 作为最终运行环境
 FROM nginx:latest

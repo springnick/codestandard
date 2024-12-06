@@ -1,5 +1,4 @@
 # VuePress 目录
-docs/.vuepress/dist/
 docs/.vuepress/.cache/
 docs/.vuepress/.temp/
 
